@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This file is part of the Simple Skeleton CMS package.
+ *
+ * (c) Concetto Vecchio <info@cvsolutions.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+declare(strict_types=1);
+
+use DI\Container;
+use Silly\Application;
+
+if (PHP_SAPI != 'cli') {
+    exit();
+}
+
+/** @var Container $container */
+$container = require __DIR__ . '/bootstrap.php';
+
+$app = new Application();
+$app->setName('Simple Skeleton CMS Console');
+$app->setVersion('1.0');
+$app->useContainer($container);
+
+try {
+    foreach ($container->get('routes')['console'] as $item) {
+        $app->command($item['expression'], $item['controller'])->descriptions($item['description']);
+    }
+    $app->run();
+} catch (Exception $e) {
+    exit($e->getMessage());
+}

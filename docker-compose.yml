@@ -1,0 +1,36 @@
+version: '3'
+services:
+
+    web:
+        image: bryanjlittlefield/tugboat-php:7.2
+        container_name: simple_skeleton_cms
+        ports:
+            - 80:80
+        restart: always
+        depends_on:
+            - mysql
+        volumes:
+            - .:/var/www/html
+
+    mysql:
+        image: mysql:5.6
+        container_name: simple_skeleton_cms_mysql
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        ports:
+            - 3306:3306
+        volumes:
+            - ./docker/mysql_data:/var/lib/mysql
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: simple_skeleton_cms_phpmyadmin
+        ports:
+            - 8081:80
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=mysql
+        restart: always
+        depends_on:
+            - mysql
