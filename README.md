@@ -28,4 +28,4 @@ Is an open source content management system.
 
 ## License
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Simple Skeleton CMS is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).

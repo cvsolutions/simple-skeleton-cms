@@ -13,6 +13,7 @@ use SimpleSkeletonCMS\Controller\Admin\ArticlesController;
 use SimpleSkeletonCMS\Controller\Admin\BlocksController;
 use SimpleSkeletonCMS\Controller\Admin\DashboardController;
 use SimpleSkeletonCMS\Controller\Admin\LoginController;
+use SimpleSkeletonCMS\Controller\Admin\LogoutController;
 use SimpleSkeletonCMS\Controller\Admin\PagesController;
 
 return [
@@ -90,6 +91,15 @@ return [
                 'route' => '/blocks/add',
                 'controller' => BlocksController::class,
                 'action' => 'add',
+                'options' => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods' => 'GET',
+                'route' => '/logout',
+                'controller' => LogoutController::class,
+                'action' => 'index',
                 'options' => [
                     'protected' => true,
                 ],

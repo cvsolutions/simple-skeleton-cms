@@ -3,6 +3,7 @@
     <div class="card w-50 m-auto">
         <div class="card-header">Simple Skeleton CMS</div>
         <div class="card-body">
+            <?php echo $this->getAlertMessages(); ?>
             <form action="" class="js-validate" method="post" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <label for="usermail">Email address</label>
@@ -21,4 +22,3 @@
         </div>
     </div>
 </div>
-<?php echo $this->getAlertMessages(); ?>

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Extension;
 
+use Delight\Auth\Auth;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,14 +34,21 @@ class ViewHelpers implements ExtensionInterface
     protected $session;
 
     /**
+     * @var Auth
+     */
+    protected $auth;
+
+    /**
      * ViewHelpers constructor.
      * @param Request $request
      * @param Session $session
+     * @param Auth $auth
      */
-    public function __construct(Request $request, Session $session)
+    public function __construct(Request $request, Session $session, Auth $auth)
     {
         $this->request = $request;
         $this->session = $session;
+        $this->auth = $auth;
     }
 
     /**
@@ -48,16 +56,16 @@ class ViewHelpers implements ExtensionInterface
      */
     public function register(Engine $engine)
     {
-        $engine->registerFunction('getBreadcrumbActive', [$this, 'getBreadcrumbActive']);
+        $engine->registerFunction('getUsername', [$this, 'getUsername']);
         $engine->registerFunction('getAlertMessages', [$this, 'getAlertMessages']);
     }
 
     /**
      * @return string
      */
-    public function getBreadcrumbActive()
+    public function getUsername(): string
     {
-        return $this->request->getRequestUri();
+        return $this->auth->getUsername();
     }
 
     /**

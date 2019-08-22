@@ -50,6 +50,6 @@ return [
         return new Auth($pdo);
     },
     ViewHelpers::class => function (Container $container) {
-        return new ViewHelpers($container->get(Request::class), $container->get(Session::class));
+        return new ViewHelpers($container->get(Request::class), $container->get(Session::class), $container->get(Auth::class));
     },
 ];

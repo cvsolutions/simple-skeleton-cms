@@ -106,7 +106,15 @@ class Application
                 $options = $routeInfo[1]['options'];
                 $parameters = $routeInfo[2];
                 if ($options['protected'] === true) {
-                    $auth->isLoggedIn();
+                    if (!$auth->isLoggedIn()) {
+                        $response = new Response(
+                            'Errore 403: Accesso negato',
+                            Response::HTTP_FORBIDDEN,
+                            ['content-type' => 'text/html']
+                        );
+                        $response->send();
+                        exit();
+                    }
                 }
                 $locale = $parameters['lang'] ?? 'it';
                 L10n::init($locale, sprintf('%s/../translations/%s.mo', __DIR__, $locale));
