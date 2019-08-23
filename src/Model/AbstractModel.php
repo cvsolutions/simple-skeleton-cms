@@ -9,15 +9,12 @@
  */
 declare(strict_types=1);
 
-namespace SimpleSkeletonCMS\Exception;
-
-use Exception;
-
+namespace SimpleSkeletonCMS\Model;
 /**
- * Class FailedLoginException
- * @package SimpleSkeletonCMS\Exception
+ * Class AbstractModel
+ * @package SimpleSkeletonCMS\Model
  */
-class FailedLoginException extends Exception
+abstract class AbstractModel
 {
 
 }

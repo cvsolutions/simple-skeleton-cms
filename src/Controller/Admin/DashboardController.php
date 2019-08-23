@@ -11,33 +11,19 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Controller\Admin;
 
-use SimpleSkeletonCMS\Service\TemplateService;
+use SimpleSkeletonCMS\Controller\AbstractController;
 
 /**
  * Class DashboardController
  * @package SimpleSkeletonCMS\Controller\Admin
  */
-class DashboardController
+class DashboardController extends AbstractController
 {
-    /**
-     * @var TemplateService
-     */
-    protected $templateService;
-
-    /**
-     * DashboardController constructor.
-     * @param TemplateService $templateService
-     */
-    public function __construct(TemplateService $templateService)
-    {
-        $this->templateService = $templateService;
-    }
-
     /**
      * @return string
      */
     public function index(): string
     {
-        return $this->templateService->render('admin::dashboard', []);
+        return $this->view->render('admin::dashboard', []);
     }
 }

@@ -11,30 +11,15 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Controller\Admin;
 
-use Delight\Auth\Auth;
 use Delight\Auth\AuthError;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use SimpleSkeletonCMS\Controller\AbstractController;
 
 /**
  * Class LoginController
  * @package SimpleSkeletonCMS\Controller\Admin
  */
-class LogoutController
+class LogoutController extends AbstractController
 {
-    /**
-     * @var Auth
-     */
-    protected $auth;
-
-    /**
-     * LogoutController constructor.
-     * @param Auth $auth
-     */
-    public function __construct(Auth $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      *
      */
@@ -45,7 +30,6 @@ class LogoutController
         } catch (AuthError $e) {
             exit($e->getMessage());
         }
-        (new RedirectResponse('/'))->send();
-        exit();
+        $this->redirect('/');
     }
 }

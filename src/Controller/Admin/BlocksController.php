@@ -11,34 +11,20 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Controller\Admin;
 
-use SimpleSkeletonCMS\Service\TemplateService;
+use SimpleSkeletonCMS\Controller\AbstractController;
 
 /**
  * Class BlocksController
  * @package SimpleSkeletonCMS\Controller\Admin
  */
-class BlocksController
+class BlocksController extends AbstractController
 {
-    /**
-     * @var TemplateService
-     */
-    protected $templateService;
-
-    /**
-     * BlocksController constructor.
-     * @param TemplateService $templateService
-     */
-    public function __construct(TemplateService $templateService)
-    {
-        $this->templateService = $templateService;
-    }
-
     /**
      * @return string
      */
     public function index(): string
     {
-        return $this->templateService->render('admin::blocks', []);
+        return $this->view->render('admin::blocks', []);
     }
 
     /**
@@ -46,7 +32,7 @@ class BlocksController
      */
     public function add(): string
     {
-        return $this->templateService->render('admin::blocks-add', []);
+        return $this->view->render('admin::blocks-add', []);
     }
 
     /**
@@ -54,6 +40,6 @@ class BlocksController
      */
     public function edit(): string
     {
-        return $this->templateService->render('admin::blocks-edit', []);
+        return $this->view->render('admin::blocks-edit', []);
     }
 }

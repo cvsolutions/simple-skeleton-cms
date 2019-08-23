@@ -17,6 +17,7 @@ use DI\DependencyException;
 use DI\NotFoundException;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use SimpleSkeletonCMS\Utility\MessagesUtil;
 use smmoosavi\util\gettext\L10n;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,12 +80,13 @@ class Application
             $uri = substr($uri, 0, $pos);
         }
         $uri = rawurldecode($uri);
-
         $routeInfo = $dispatcher->dispatch($request->getMethod(), $uri);
+
         switch ($routeInfo[0]) {
+
             case Dispatcher::NOT_FOUND:
                 $response = new Response(
-                    'La pagina cercata non è disponibile',
+                    MessagesUtil::MSG_NOT_FOUND,
                     Response::HTTP_NOT_FOUND,
                     ['content-type' => 'text/html']
                 );
@@ -94,7 +96,7 @@ class Application
             case Dispatcher::METHOD_NOT_ALLOWED:
                 // $allowedMethods = $routeInfo[1];
                 $response = new Response(
-                    'Method Not Allowed',
+                    MessagesUtil::MSG_METHOD_NOT_ALLOWED,
                     Response::HTTP_METHOD_NOT_ALLOWED,
                     ['content-type' => 'text/html']
                 );
@@ -108,7 +110,7 @@ class Application
                 if ($options['protected'] === true) {
                     if (!$auth->isLoggedIn()) {
                         $response = new Response(
-                            'Errore 403: Accesso negato',
+                            MessagesUtil::MSG_FORBIDDEN,
                             Response::HTTP_FORBIDDEN,
                             ['content-type' => 'text/html']
                         );

@@ -11,33 +11,19 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Controller\App;
 
-use SimpleSkeletonCMS\Service\TemplateService;
+use SimpleSkeletonCMS\Controller\AbstractController;
 
 /**
  * Class HomeController
  * @package SimpleSkeletonCMS\Controller\App
  */
-class HomeController
+class HomeController extends AbstractController
 {
-    /**
-     * @var TemplateService
-     */
-    protected $templateService;
-
-    /**
-     * HomeController constructor.
-     * @param TemplateService $templateService
-     */
-    public function __construct(TemplateService $templateService)
-    {
-        $this->templateService = $templateService;
-    }
-
     /**
      * @return string
      */
     public function index(): string
     {
-        return $this->templateService->render('app::home', []);
+        return $this->view->render('app::home', []);
     }
 }

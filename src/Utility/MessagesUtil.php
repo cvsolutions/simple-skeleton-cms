@@ -17,6 +17,9 @@ namespace SimpleSkeletonCMS\Utility;
  */
 class MessagesUtil
 {
-    public const NO_ACCESS_ALLOWED = 'Il nome utente o la password che hai inserito non sono corretti';
+    public const MSG_NO_ACCESS_ALLOWED  = 'Il nome utente o la password che hai inserito non sono corretti';
+    public const MSG_NOT_FOUND          = 'La pagina cercata non è disponibile';
+    public const MSG_METHOD_NOT_ALLOWED = 'Method Not Allowed';
+    public const MSG_FORBIDDEN          = 'Errore 403: Accesso negato';
 
 }

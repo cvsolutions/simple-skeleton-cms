@@ -11,34 +11,20 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Controller\Admin;
 
-use SimpleSkeletonCMS\Service\TemplateService;
+use SimpleSkeletonCMS\Controller\AbstractController;
 
 /**
  * Class ArticlesController
  * @package SimpleSkeletonCMS\Controller\Admin
  */
-class ArticlesController
+class ArticlesController extends AbstractController
 {
-    /**
-     * @var TemplateService
-     */
-    protected $templateService;
-
-    /**
-     * ArticlesController constructor.
-     * @param TemplateService $templateService
-     */
-    public function __construct(TemplateService $templateService)
-    {
-        $this->templateService = $templateService;
-    }
-
     /**
      * @return string
      */
     public function index(): string
     {
-        return $this->templateService->render('admin::articles', []);
+        return $this->view->render('admin::articles', []);
     }
 
     /**
@@ -46,7 +32,7 @@ class ArticlesController
      */
     public function add(): string
     {
-        return $this->templateService->render('admin::articles-add', []);
+        return $this->view->render('admin::articles-add', []);
     }
 
     /**
@@ -54,6 +40,6 @@ class ArticlesController
      */
     public function edit(): string
     {
-        return $this->templateService->render('admin::articles-edit', []);
+        return $this->view->render('admin::articles-edit', []);
     }
 }
