@@ -13,10 +13,9 @@ namespace SimpleSkeletonCMS\Extension;
 
 use Carbon\Carbon;
 use Delight\Auth\Auth;
-use Doctrine\ORM\EntityManager;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
-use SimpleSkeletonCMS\Entity\Users;
+use SimpleSkeletonCMS\Model\UserModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -42,23 +41,23 @@ class ViewHelpers implements ExtensionInterface
     protected $auth;
 
     /**
-     * @var EntityManager
+     * @var UserModel
      */
-    protected $entityManager;
+    protected $userModel;
 
     /**
      * ViewHelpers constructor.
      * @param Request $request
      * @param Session $session
      * @param Auth $auth
-     * @param EntityManager $entityManager
+     * @param UserModel $userModel
      */
-    public function __construct(Request $request, Session $session, Auth $auth, EntityManager $entityManager)
+    public function __construct(Request $request, Session $session, Auth $auth, UserModel $userModel)
     {
         $this->request = $request;
         $this->session = $session;
         $this->auth = $auth;
-        $this->entityManager = $entityManager;
+        $this->userModel = $userModel;
     }
 
     /**
@@ -72,12 +71,12 @@ class ViewHelpers implements ExtensionInterface
     }
 
     /**
-     * @return object|Users
+     * @return array
      */
-    public function getUser()
+    public function getUser(): array
     {
         $userId = $this->auth->getUserId();
-        return $this->entityManager->getRepository(Users::class)->find($userId);
+        return $this->userModel->findById($userId);
     }
 
     /**

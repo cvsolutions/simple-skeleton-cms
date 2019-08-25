@@ -4,7 +4,7 @@
     <div class="card">
         <h5 class="card-header">Dashboard</h5>
         <div class="card-body">
-            <p>Bentornato <?php echo $this->e($this->getUser()->getUsername()); ?>, Il tuo ultimo login è stato <?php echo $this->e($this->getDateFromTimestamp($this->getUser()->getLastLogin())); ?></p>
+            <p>Bentornato <?php echo $this->e($this->getUser()['username']); ?>, Il tuo ultimo login è stato <?php echo $this->e($this->getDateFromTimestamp($this->getUser()['last_login'])); ?></p>
         </div>
     </div>
 </section>

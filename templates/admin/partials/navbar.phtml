@@ -12,7 +12,7 @@
             <li class="nav-item"><a class="nav-link" href="/admin/categories"><i class="fas fa-coffee"></i> Categorie</a></li>
         </ul>
         <ul class="list-inline navbar-text">
-            <li class="list-inline-item">Bentornato, <a href="/admin/profile"><?php echo $this->e($this->getUser()->getUsername()); ?></a></li>
+            <li class="list-inline-item">Bentornato, <a href="/admin/profile"><?php echo $this->e($this->getUser()['username']); ?></a></li>
             <li class="list-inline-item"><a href="/admin/settings"><i class="fas fa-cog"></i></li>
             <li class="list-inline-item"><a href="/admin/logout" class="text-danger"><i class="fas fa-power-off"></i></a></li>
         </ul>

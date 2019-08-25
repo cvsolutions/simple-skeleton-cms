@@ -26,7 +26,6 @@ Is an open source content management system.
 - [PHP-Auth](https://github.com/delight-im/PHP-Auth)
 - [Silly CLI micro-framework](https://github.com/mnapoli/silly)
 - [Carbon](https://github.com/briannesbitt/carbon)
-- [Doctrine](https://github.com/doctrine/orm)
 
 ## License
 
