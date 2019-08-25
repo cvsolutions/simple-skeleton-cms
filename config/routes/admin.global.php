@@ -11,10 +11,13 @@ declare(strict_types=1);
 
 use SimpleSkeletonCMS\Controller\Admin\ArticlesController;
 use SimpleSkeletonCMS\Controller\Admin\BlocksController;
+use SimpleSkeletonCMS\Controller\Admin\CategoriesController;
 use SimpleSkeletonCMS\Controller\Admin\DashboardController;
 use SimpleSkeletonCMS\Controller\Admin\LoginController;
 use SimpleSkeletonCMS\Controller\Admin\LogoutController;
 use SimpleSkeletonCMS\Controller\Admin\PagesController;
+use SimpleSkeletonCMS\Controller\Admin\ProfileController;
+use SimpleSkeletonCMS\Controller\Admin\SettingsController;
 
 return [
     'routes' => [
@@ -91,6 +94,42 @@ return [
                 'route' => '/blocks/add',
                 'controller' => BlocksController::class,
                 'action' => 'add',
+                'options' => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods' => 'GET',
+                'route' => '/categories',
+                'controller' => CategoriesController::class,
+                'action' => 'index',
+                'options' => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods' => 'GET',
+                'route' => '/categories/add',
+                'controller' => CategoriesController::class,
+                'action' => 'add',
+                'options' => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods' => 'GET',
+                'route' => '/profile',
+                'controller' => ProfileController::class,
+                'action' => 'index',
+                'options' => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods' => 'GET',
+                'route' => '/settings',
+                'controller' => SettingsController::class,
+                'action' => 'index',
                 'options' => [
                     'protected' => true,
                 ],

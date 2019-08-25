@@ -15,16 +15,18 @@ Is an open source content management system.
 
 ## PHP packages
 
+- [PHP-DI](https://github.com/PHP-DI/PHP-DI)
 - [FastRoute](https://github.com/nikic/FastRoute)
 - [Plates](https://github.com/thephpleague/plates)
 - [HttpFoundation](https://github.com/symfony/http-foundation)
 - [zend-config](https://github.com/zendframework/zend-config)
 - [php-gettext](https://github.com/smmoosavi/php-gettext)
-- [Doctrine](https://github.com/doctrine/orm)
 - [PHP dotenv](https://github.com/vlucas/phpdotenv)
 - [Intervention Image](https://github.com/Intervention/image)
 - [PHP-Auth](https://github.com/delight-im/PHP-Auth)
 - [Silly CLI micro-framework](https://github.com/mnapoli/silly)
+- [Carbon](https://github.com/briannesbitt/carbon)
+- [Doctrine](https://github.com/doctrine/orm)
 
 ## License
 

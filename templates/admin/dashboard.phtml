@@ -4,7 +4,7 @@
     <div class="card">
         <h5 class="card-header">Dashboard</h5>
         <div class="card-body">
-            <p>This is some text within a card body.</p>
+            <p>Bentornato <?php echo $this->e($this->getUser()->getUsername()); ?>, Il tuo ultimo login è stato <?php echo $this->e($this->getDateFromTimestamp($this->getUser()->getLastLogin())); ?></p>
         </div>
     </div>
 </section>

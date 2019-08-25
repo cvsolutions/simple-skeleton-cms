@@ -11,9 +11,12 @@ declare(strict_types=1);
 
 namespace SimpleSkeletonCMS\Extension;
 
+use Carbon\Carbon;
 use Delight\Auth\Auth;
+use Doctrine\ORM\EntityManager;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
+use SimpleSkeletonCMS\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -39,16 +42,23 @@ class ViewHelpers implements ExtensionInterface
     protected $auth;
 
     /**
+     * @var EntityManager
+     */
+    protected $entityManager;
+
+    /**
      * ViewHelpers constructor.
      * @param Request $request
      * @param Session $session
      * @param Auth $auth
+     * @param EntityManager $entityManager
      */
-    public function __construct(Request $request, Session $session, Auth $auth)
+    public function __construct(Request $request, Session $session, Auth $auth, EntityManager $entityManager)
     {
         $this->request = $request;
         $this->session = $session;
         $this->auth = $auth;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -56,16 +66,18 @@ class ViewHelpers implements ExtensionInterface
      */
     public function register(Engine $engine)
     {
-        $engine->registerFunction('getUsername', [$this, 'getUsername']);
+        $engine->registerFunction('getUser', [$this, 'getUser']);
         $engine->registerFunction('getAlertMessages', [$this, 'getAlertMessages']);
+        $engine->registerFunction('getDateFromTimestamp', [$this, 'getDateFromTimestamp']);
     }
 
     /**
-     * @return string
+     * @return object|Users
      */
-    public function getUsername(): string
+    public function getUser()
     {
-        return $this->auth->getUsername();
+        $userId = $this->auth->getUserId();
+        return $this->entityManager->getRepository(Users::class)->find($userId);
     }
 
     /**
@@ -83,5 +95,17 @@ class ViewHelpers implements ExtensionInterface
             }
         }
         return $html;
+    }
+
+    /**
+     * @param int $timestamp
+     * @param string $format
+     * @param string $locale
+     * @return string
+     */
+    public function getDateFromTimestamp(int $timestamp, string $format = 'dddd, D MMMM YYYY, HH:mm', string $locale = 'it'): string
+    {
+        $date = Carbon::createFromTimestamp($timestamp);
+        return $date->locale($locale)->isoFormat($format);
     }
 }

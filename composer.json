@@ -21,7 +21,9 @@
         "vlucas/phpdotenv": "^3.4",
         "intervention/image": "^2.5",
         "delight-im/auth": "^8.1",
-        "mnapoli/silly": "^1.7"
+        "mnapoli/silly": "^1.7",
+        "nesbot/carbon": "^2.23",
+        "doctrine/orm": "^2.6"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.3",
