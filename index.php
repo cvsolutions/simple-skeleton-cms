@@ -13,7 +13,6 @@ use DI\ContainerBuilder;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Dotenv\Dotenv;
-use Silly\Application as CliApplication;
 use SimpleSkeletonCMS\Application;
 use Zend\Config\Factory;
 
@@ -29,18 +28,7 @@ $containerBuilder->addDefinitions($config);
 
 try {
     $container = $containerBuilder->build();
-    if (PHP_SAPI != 'cli') {
-        (new Application($container))->init();
-    } else {
-        $app = new CliApplication();
-        $app->setName('Simple Skeleton CMS Console');
-        $app->setVersion('1.0');
-        $app->useContainer($container);
-        foreach ($container->get('routes')['console'] as $item) {
-            $app->command($item['expression'], $item['controller'])->descriptions($item['description']);
-        }
-        $app->run();
-    }
+    (new Application($container))->init();
 } catch (DependencyException | NotFoundException | Exception $e) {
     exit($e->getMessage());
 }

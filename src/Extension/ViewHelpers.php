@@ -54,9 +54,9 @@ class ViewHelpers implements ExtensionInterface
      */
     public function __construct(Request $request, Session $session, Auth $auth, UserModel $userModel)
     {
-        $this->request = $request;
-        $this->session = $session;
-        $this->auth = $auth;
+        $this->request   = $request;
+        $this->session   = $session;
+        $this->auth      = $auth;
         $this->userModel = $userModel;
     }
 
@@ -102,8 +102,11 @@ class ViewHelpers implements ExtensionInterface
      * @param string $locale
      * @return string
      */
-    public function getDateFromTimestamp(int $timestamp, string $format = 'dddd, D MMMM YYYY, HH:mm', string $locale = 'it'): string
-    {
+    public function getDateFromTimestamp(
+        int $timestamp,
+        string $format = 'dddd, D MMMM YYYY, HH:mm',
+        string $locale = 'it'
+    ): string {
         $date = Carbon::createFromTimestamp($timestamp);
         return $date->locale($locale)->isoFormat($format);
     }

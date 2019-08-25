@@ -52,18 +52,18 @@ abstract class AbstractController
      */
     public function __construct(TemplateService $templateService, Request $request, Auth $auth, Session $session)
     {
-        $this->view = $templateService;
+        $this->view    = $templateService;
         $this->request = $request;
-        $this->auth = $auth;
+        $this->auth    = $auth;
         $this->session = $session;
     }
 
     /**
      * @param string $url
+     * @return RedirectResponse
      */
-    public function redirect(string $url)
+    public function redirect(string $url): RedirectResponse
     {
-        (new RedirectResponse($url))->send();
-        exit();
+        return (new RedirectResponse($url))->send();
     }
 }

@@ -31,9 +31,12 @@ class LoginController extends AbstractController
      */
     public function index(): string
     {
+        if ($this->auth->check()) {
+            $this->redirect('/admin/dashboard');
+        }
         if ($this->request->getMethod() === 'POST') {
-            $formData = array_map('trim', $this->request->request->all());
-            $remember = isset($formData['remember']) ? 1 : 0;
+            $formData         = array_map('trim', $this->request->request->all());
+            $remember         = isset($formData['remember']) ? 1 : 0;
             $rememberDuration = null;
             if ($remember == 1) {
                 $this->auth::createRememberCookieName();
@@ -42,7 +45,12 @@ class LoginController extends AbstractController
             try {
                 $this->auth->login($formData['usermail'], $formData['pwd'], $rememberDuration);
                 $this->redirect('/admin/dashboard');
-            } catch (AttemptCancelledException | TooManyRequestsException | InvalidPasswordException | InvalidEmailException | EmailNotVerifiedException | AuthError $e) {
+            } catch (AttemptCancelledException |
+            TooManyRequestsException |
+            InvalidPasswordException |
+            InvalidEmailException |
+            EmailNotVerifiedException |
+            AuthError $e) {
                 $this->session->getFlashBag()->add('danger', MessagesUtil::MSG_NO_ACCESS_ALLOWED);
             }
         }
