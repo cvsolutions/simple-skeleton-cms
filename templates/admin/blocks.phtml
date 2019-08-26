@@ -1,46 +1,49 @@
 <?php $this->layout('admin::layout', []); ?>
 <?php $this->insert('admin::partials/navbar'); ?>
 <section class="mt-3">
+    <h1>Layout dei blocchi</h1>
     <div class="card">
-        <h5 class="card-header">Layout dei blocchi</h5>
-        <div class="card-body">
-            <ul class="nav nav-tabs">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item"><a class="nav-link active" href="#">Visualizza contenuti</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-plus"></i> Aggiungi nuovo</a></li>
             </ul>
-            <br>
-            <table class="js-datatable table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Blocco</th>
-                    <th>Pagina</th>
-                    <th>Articolo</th>
-                    <th>Home</th>
-                    <th>Posizione</th>
-                    <th>Pubblicazione</th>
-                    <th>Modifica</th>
-                    <th>Operazioni</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>Lorem ipsum</td>
-                    <td>
-                        <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="js-datatable table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Blocco</th>
+                        <th>Pagina</th>
+                        <th>Articolo</th>
+                        <th>Home</th>
+                        <th>Posizione</th>
+                        <th>Pubblicazione</th>
+                        <th>Modifica</th>
+                        <th>Operazioni</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>Lorem ipsum</td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </section>

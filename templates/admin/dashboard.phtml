@@ -1,8 +1,8 @@
 <?php $this->layout('admin::layout', []); ?>
 <?php $this->insert('admin::partials/navbar'); ?>
 <section class="mt-3">
+    <h1>Dashboard</h1>
     <div class="card">
-        <h5 class="card-header">Dashboard</h5>
         <div class="card-body">
             <p>Bentornato <?php echo $this->e($this->getUser()['username']); ?>, Il tuo ultimo login è stato <?php echo $this->e($this->getDateFromTimestamp($this->getUser()['last_login'])); ?></p>
         </div>

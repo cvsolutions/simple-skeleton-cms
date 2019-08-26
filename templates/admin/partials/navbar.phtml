@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="/admin/pages"><i class="far fa-file-alt"></i> Gestore delle Pagine</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/pages"><i class="far fa-file-alt"></i> Gestore delle pagine</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/blocks"><i class="fas fa-th-large"></i> Layout dei blocchi</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/articles"><i class="far fa-calendar-alt"></i> Articoli</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/categories"><i class="fas fa-coffee"></i> Categorie</a></li>
@@ -18,8 +18,8 @@
                     Bentornato, <?php echo $this->e($this->getUser()['username']); ?>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/admin/profile" target="_blank">profile</a>
-                    <a class="dropdown-item" href="/admin/settings" target="_blank">settings</a>
+                    <a class="dropdown-item" href="/admin/profile">Modifica profilo</a>
+                    <a class="dropdown-item" href="/admin/settings">Configurazione</a>
                     <a class="dropdown-item" href="/" target="_blank">Anteprima del sito</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/admin/logout" onclick="return confirm('Sei sicuro di voler uscire?')">Logout</a>
