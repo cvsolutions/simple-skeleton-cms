@@ -16,6 +16,7 @@ use SimpleSkeletonCMS\Controller\Admin\DashboardController;
 use SimpleSkeletonCMS\Controller\Admin\LoginController;
 use SimpleSkeletonCMS\Controller\Admin\LogoutController;
 use SimpleSkeletonCMS\Controller\Admin\PagesController;
+use SimpleSkeletonCMS\Controller\Admin\PhotoGalleryController;
 use SimpleSkeletonCMS\Controller\Admin\ProfileController;
 use SimpleSkeletonCMS\Controller\Admin\SettingsController;
 
@@ -112,6 +113,15 @@ return [
                 'route' => '/categories/add',
                 'controller' => CategoriesController::class,
                 'action' => 'add',
+                'options' => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods' => 'GET',
+                'route' => '/gallery',
+                'controller' => PhotoGalleryController::class,
+                'action' => 'index',
                 'options' => [
                     'protected' => true,
                 ],

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Concetto Vecchio - www.cvsolutions.it">
     <!-- stylesheet -->
-    <link rel="stylesheet" href="/templates/admin/assets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
@@ -22,8 +22,10 @@
     <title>Simple Skeleton CMS | Admin</title>
 </head>
 <body>
-<?php echo $this->section('content'); ?>
-<footer class="container-fluid mt-5">
+<main class="container-fluid pt-3">
+    <?php echo $this->section('content'); ?>
+</main>
+<footer class="container mt-5">
     <p class="small text-center">
         Copyright © 2019
         <a href="https://www.cvsolutions.it" target="_blank">CVSolutions</a> di Vecchio Concetto - Made with

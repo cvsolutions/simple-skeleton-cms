@@ -1,12 +1,12 @@
 <?php $this->layout('admin::layout', []); ?>
-<div class="container mt-5">
-    <div class="card w-50 m-auto">
+<section class="mt-5">
+    <div class="card w-25 m-auto">
         <div class="card-header">Simple Skeleton CMS</div>
         <div class="card-body">
             <?php echo $this->getAlertMessages(); ?>
             <form action="" class="js-validate" method="post" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
-                    <label for="usermail">Email address</label>
+                    <label for="usermail">Indirizzo email</label>
                     <input type="email" class="form-control" id="usermail" name="usermail" value="" required>
                 </div>
                 <div class="form-group">
@@ -21,4 +21,4 @@
             </form>
         </div>
     </div>
-</div>
+</section>
