@@ -48,7 +48,7 @@ return [
     },
     Auth::class => function (Container $container) {
         $PDO = $container->get(PDO::class);
-        return new Auth($PDO);
+        return new Auth($PDO, null, 'cms_');
     },
     ViewHelpers::class => function (Container $container) {
         return new ViewHelpers(

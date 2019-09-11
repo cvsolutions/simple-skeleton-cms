@@ -23,7 +23,7 @@ class UserModel extends AbstractModel
      */
     public function findById($userId): array
     {
-        $sth = $this->pdo->prepare('SELECT * FROM users WHERE id = ? LIMIT 0,1');
+        $sth = $this->pdo->prepare('SELECT * FROM cms_users WHERE id = ? LIMIT 0,1');
         $sth->execute([$userId]);
         return $sth->fetch();
     }

@@ -55,7 +55,7 @@ return [
                 ],
             ],
             [
-                'methods' => 'GET',
+                'methods' => ['GET', 'POST'],
                 'route' => '/pages/add',
                 'controller' => PagesController::class,
                 'action' => 'add',
@@ -73,7 +73,7 @@ return [
                 ],
             ],
             [
-                'methods' => 'GET',
+                'methods' => ['GET', 'POST'],
                 'route' => '/articles/add',
                 'controller' => ArticlesController::class,
                 'action' => 'add',
@@ -91,7 +91,7 @@ return [
                 ],
             ],
             [
-                'methods' => 'GET',
+                'methods' => ['GET', 'POST'],
                 'route' => '/blocks/add',
                 'controller' => BlocksController::class,
                 'action' => 'add',
@@ -109,7 +109,7 @@ return [
                 ],
             ],
             [
-                'methods' => 'GET',
+                'methods' => ['GET', 'POST'],
                 'route' => '/categories/add',
                 'controller' => CategoriesController::class,
                 'action' => 'add',
@@ -127,7 +127,7 @@ return [
                 ],
             ],
             [
-                'methods' => 'GET',
+                'methods' => ['GET', 'POST'],
                 'route' => '/profile',
                 'controller' => ProfileController::class,
                 'action' => 'index',
@@ -136,7 +136,7 @@ return [
                 ],
             ],
             [
-                'methods' => 'GET',
+                'methods' => ['GET', 'POST'],
                 'route' => '/settings',
                 'controller' => SettingsController::class,
                 'action' => 'index',
