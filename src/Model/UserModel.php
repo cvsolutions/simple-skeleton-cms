@@ -34,11 +34,6 @@ class UserModel extends AbstractModel implements GenericModelInterface
         // TODO: Implement delete() method.
     }
 
-    public function findAll(): array
-    {
-        // TODO: Implement findAll() method.
-    }
-
     /**
      * @return bool
      */
@@ -57,5 +52,10 @@ class UserModel extends AbstractModel implements GenericModelInterface
         $sth = $this->pdo->prepare('SELECT * FROM cms_users WHERE id = ? LIMIT 0,1');
         $sth->execute([$userId]);
         return $sth->fetch();
+    }
+
+    public function findAll(): array
+    {
+        // TODO: Implement findAll() method.
     }
 }

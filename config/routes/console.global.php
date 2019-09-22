@@ -10,7 +10,6 @@
 declare(strict_types=1);
 
 use SimpleSkeletonCMS\Controller\Console\AddUserController;
-use SimpleSkeletonCMS\Controller\Console\PopulateDatabaseController;
 
 return [
     'routes' => [
@@ -23,11 +22,6 @@ return [
                 'expression'  => 'add-user',
                 'controller'  => AddUserController::class,
                 'description' => 'New user registration',
-            ],
-            [
-                'expression'  => 'populate-database',
-                'controller'  => PopulateDatabaseController::class,
-                'description' => 'Populate database',
             ],
         ],
     ],

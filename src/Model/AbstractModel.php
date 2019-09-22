@@ -32,4 +32,12 @@ abstract class AbstractModel
     {
         $this->pdo = $PDO;
     }
+
+    /**
+     * @return PDO
+     */
+    public function getPdo(): PDO
+    {
+        return $this->pdo;
+    }
 }
