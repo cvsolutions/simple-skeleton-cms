@@ -19,11 +19,11 @@ return [
          */
         'app' => [
             [
-                'methods' => 'GET',
-                'route' => '/[{lang:it|en}]',
+                'methods'    => 'GET',
+                'route'      => '/[{lang:it|en}]',
                 'controller' => HomeController::class,
-                'action' => 'index',
-                'options' => [
+                'action'     => 'index',
+                'options'    => [
                     'protected' => false,
                 ],
             ],

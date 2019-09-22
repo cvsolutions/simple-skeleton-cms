@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: gainsboro;
+}
+
+nav a {
+    font-size: 14px;
+}
+
+.color {
+    color: #1cbac8;
+}
+
+.box-1 {
+    background: #0999a6;
+}
+
+.box-2 {
+    background: #15b4c2;
+}
+
+.box-3 {
+    background: #2bd1e0;
+}
+
+.img-1 {
+    background: url('https://source.unsplash.com/random') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 640px;
+}
+
+.img-2 {
+    background: url('https://source.unsplash.com/random') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 400px;
+}
+
+.greyline {
+    background: #6b6b6b;
+    min-height: 5px;
+}
+
+.greyline-footer {
+    background: #6b6b6b;
+    min-height: 5px;
+}
+
+.text-shadow {
+    text-shadow: 0 0 8px #000;
+}
+
+.box-hover a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.box-hover:hover {
+    background: #000 !important;
+}
+
+.border-color {
+    border-color: #15b4c2 !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: lightgray;
+}
+
+.slick-arrow {
+    color: rebeccapurple !important;
+}
+
+@media (max-width: 575px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        column-count: 3;
+    }
+}

@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Concetto Vecchio - www.cvsolutions.it">
     <!-- stylesheet -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/templates/admin/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css">
+    <link rel="stylesheet" href="/templates/admin/assets/css/app.css">
     <!-- script -->
     <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -18,7 +21,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/localization/messages_it.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.it.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.full.min.js"></script>
     <script src="//cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+    <script src="/templates/admin/assets/js/app.js"></script>
     <title>Simple Skeleton CMS | Admin</title>
 </head>
 <body>
@@ -27,95 +34,10 @@
 </main>
 <footer class="container mt-5">
     <p class="small text-center">
-        Copyright © 2019
+        Copyright © 2019s
         <a href="https://www.cvsolutions.it" target="_blank">CVSolutions</a> di Vecchio Concetto - Made with
         <i class="fa fa-heart"></i> using HTML5, CSS3 and PHP
     </p>
 </footer>
-<!-- script -->
-<script>
-    $(document).ready(function () {
-        $('.js-validate').validate({
-            errorElement: "em",
-            errorPlacement: function (error, element) {
-                // Add the `invalid-feedback` class to the error element
-                error.addClass("invalid-feedback");
-                if (element.prop("type") === "checkbox") {
-                    error.insertAfter(element.next("label"));
-                } else {
-                    error.insertAfter(element);
-                }
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).addClass("is-invalid").removeClass("is-valid");
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).addClass("is-valid").removeClass("is-invalid");
-            }
-        });
-        $('.js-datatable').DataTable({
-            "language": {
-                "sEmptyTable": "Nessun dato presente nella tabella",
-                "sInfo": "Vista da _START_ a _END_ di _TOTAL_ elementi",
-                "sInfoEmpty": "Vista da 0 a 0 di 0 elementi",
-                "sInfoFiltered": "(filtrati da _MAX_ elementi totali)",
-                "sInfoPostFix": "",
-                "sInfoThousands": ".",
-                "sLengthMenu": "Visualizza _MENU_ elementi",
-                "sLoadingRecords": "Caricamento...",
-                "sProcessing": "Elaborazione...",
-                "sSearch": "Cerca:",
-                "sZeroRecords": "La ricerca non ha portato alcun risultato.",
-                "oPaginate": {
-                    "sFirst": "Inizio",
-                    "sPrevious": "Precedente",
-                    "sNext": "Successivo",
-                    "sLast": "Fine"
-                },
-                "oAria": {
-                    "sSortAscending": ": attiva per ordinare la colonna in ordine crescente",
-                    "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
-                }
-            }
-        });
-        $('[data-toggle="tooltip"]').tooltip();
-        var ckeditorConfiguration = {
-            language: 'it',
-            height: 480
-        };
-        if ($('#content_1_it').length > 0) {
-            CKEDITOR.replace('content_1_it', ckeditorConfiguration);
-        }
-        if ($('#content_2_it').length > 0) {
-            CKEDITOR.replace('content_2_it', ckeditorConfiguration);
-        }
-        if ($('#content_1_en').length > 0) {
-            CKEDITOR.replace('content_1_en', ckeditorConfiguration);
-        }
-        if ($('#content_2_en').length > 0) {
-            CKEDITOR.replace('content_2_en', ckeditorConfiguration);
-        }
-        if ($('#content_1_fr').length > 0) {
-            CKEDITOR.replace('content_1_fr', ckeditorConfiguration);
-        }
-        if ($('#content_2_fr').length > 0) {
-            CKEDITOR.replace('content_2_fr', ckeditorConfiguration);
-        }
-        CKEDITOR.config.allowedContent = true;
-    });
-    Dropzone.options.galleryDropzone = {
-        dictDefaultMessage: "Trascina i file qui o fai clic per caricare.",
-        paramName: "image",
-        maxFilesize: 10,
-        maxFiles: 15,
-        parallelUploads: 1,
-        acceptedFiles: "image/*",
-        init: function () {
-            this.on("queuecomplete", function (file) {
-                alert("Operazione Effettuata con successo. Premi il pulsante Reload per continuare");
-            });
-        }
-    };
-</script>
 </body>
 </html>

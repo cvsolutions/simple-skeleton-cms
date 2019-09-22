@@ -20,10 +20,13 @@ use SimpleSkeletonCMS\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
+     * @param string $lang
      * @return string
      */
-    public function index(): string
+    public function index(string $lang = 'it'): string
     {
-        return $this->view->render('app::home', []);
+        return $this->view->render('app::home', [
+            '_lang' => $lang,
+        ]);
     }
 }

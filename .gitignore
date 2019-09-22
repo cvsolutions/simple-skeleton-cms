@@ -1,6 +1,7 @@
 .idea
 .DS_Store
 ._*
+.env
 composer.lock
 composer.phar
 vendor

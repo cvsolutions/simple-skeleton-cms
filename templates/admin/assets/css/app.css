@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url("/templates/admin/assets/img/so-white.png");
+}

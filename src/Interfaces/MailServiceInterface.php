@@ -9,18 +9,20 @@
  */
 declare(strict_types=1);
 
-namespace SimpleSkeletonCMS\Service;
+namespace SimpleSkeletonCMS\Interfaces;
+
+use Exception;
 
 /**
- * Interface TemplateServiceInterface
- * @package SimpleSkeletonCMS\Service
+ * Interface MailServiceInterface
+ * @package SimpleSkeletonCMS\Interfaces
  */
-interface TemplateServiceInterface
+interface MailServiceInterface
 {
     /**
-     * @param string $name
      * @param array $data
-     * @return string
+     * @return bool
+     * @throws Exception
      */
-    public function render(string $name, array $data = []): string;
+    public function send(array $data): bool;
 }

@@ -52,13 +52,18 @@ class ViewHelpers implements ExtensionInterface
      * @param Auth $auth
      * @param UserModel $userModel
      */
-    public function __construct(Request $request, Session $session, Auth $auth, UserModel $userModel)
-    {
+    public function __construct(
+        Request $request,
+        Session $session,
+        Auth $auth,
+        UserModel $userModel
+    ) {
         $this->request   = $request;
         $this->session   = $session;
         $this->auth      = $auth;
         $this->userModel = $userModel;
     }
+
 
     /**
      * @param Engine $engine
@@ -66,8 +71,11 @@ class ViewHelpers implements ExtensionInterface
     public function register(Engine $engine)
     {
         $engine->registerFunction('getUser', [$this, 'getUser']);
+        $engine->registerFunction('getRoles', [$this, 'getRoles']);
+        $engine->registerFunction('hasRole', [$this, 'hasRole']);
         $engine->registerFunction('getAlertMessages', [$this, 'getAlertMessages']);
         $engine->registerFunction('getDateFromTimestamp', [$this, 'getDateFromTimestamp']);
+        $engine->registerFunction('getDate', [$this, 'getDate']);
     }
 
     /**
@@ -77,6 +85,23 @@ class ViewHelpers implements ExtensionInterface
     {
         $userId = $this->auth->getUserId();
         return $this->userModel->findById($userId);
+    }
+
+    /**
+     * @return string
+     */
+    public function getRoles(): string
+    {
+        return implode(', ', $this->auth->getRoles());
+    }
+
+    /**
+     * @param int $role
+     * @return bool
+     */
+    public function hasRole(int $role): bool
+    {
+        return $this->auth->hasRole($role);
     }
 
     /**
@@ -108,6 +133,18 @@ class ViewHelpers implements ExtensionInterface
         string $locale = 'it'
     ): string {
         $date = Carbon::createFromTimestamp($timestamp);
+        return $date->locale($locale)->isoFormat($format);
+    }
+
+    /**
+     * @param string $date
+     * @param string $format
+     * @param string $locale
+     * @return string
+     */
+    public function getDate(string $date, string $format = 'dddd, D MMMM YYYY', string $locale = 'it'): string
+    {
+        $date = Carbon::parse($date);
         return $date->locale($locale)->isoFormat($format);
     }
 }

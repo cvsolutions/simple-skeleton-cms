@@ -8,7 +8,7 @@ Is an open source content management system.
 
 ## Requirements
 
-  * PHP 7 or higher
+  * PHP 7.1 or higher
   * PDO - INTL - DOM - OpenSSL
   * MySQL / SQLite / PostgreSQL
   * Apache web server
@@ -26,7 +26,16 @@ Is an open source content management system.
 - [PHP-Auth](https://github.com/delight-im/PHP-Auth)
 - [Silly CLI micro-framework](https://github.com/mnapoli/silly)
 - [Carbon](https://github.com/briannesbitt/carbon)
+- [Faker](https://github.com/fzaninotto/Faker)
+- [Pagerfanta](https://github.com/whiteoctober/Pagerfanta)
+- [PHPMailer](https://github.com/PHPMailer/PHPMailer)
 
+## Docker
+
+```shell script
+  docker-compose up -d
+  docker-compose exec web bash
+  docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
+```
 ## License
-
 The Simple Skeleton CMS is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).

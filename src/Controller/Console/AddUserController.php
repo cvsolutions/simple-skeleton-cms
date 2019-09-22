@@ -16,6 +16,7 @@ use Delight\Auth\AuthError;
 use Delight\Auth\InvalidEmailException;
 use Delight\Auth\InvalidPasswordException;
 use Delight\Auth\UserAlreadyExistsException;
+use SimpleSkeletonCMS\Utility\MessagesUtil;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -40,6 +41,11 @@ class AddUserController
         $this->auth = $auth;
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return mixed
+     */
     public function __invoke(InputInterface $input, OutputInterface $output)
     {
         $symfonyStyle = new SymfonyStyle($input, $output);
@@ -48,11 +54,13 @@ class AddUserController
         $email    = $symfonyStyle->ask('Indirizzo e-mail');
         $pwd      = $symfonyStyle->askHidden('Password');
         $username = $symfonyStyle->ask('Nome utente');
+        $role     = $symfonyStyle->ask('Ruolo Admin: 1, Collaborator: 4');
         $confirm  = $symfonyStyle->confirm('Sei sicuro di voler procedere');
 
         try {
             if ($confirm) {
                 $this->auth->admin()->createUser($email, $pwd, $username);
+                $this->auth->admin()->addRoleForUserByEmail($email, $role);
             }
         } catch (InvalidEmailException $e) {
             return $output->writeln('<error>Invalid email address</error>');
@@ -63,6 +71,6 @@ class AddUserController
         } catch (AuthError $e) {
             return $output->writeln(sprintf('<error>%s</error>', $e->getMessage()));
         }
-        return $output->writeln('<info>OK</info>');
+        return $output->writeln(sprintf('<info>%s</info>', MessagesUtil::MSG_SUCCESSFULLY));
     }
 }

@@ -66,4 +66,13 @@ abstract class AbstractController
     {
         return (new RedirectResponse($url))->send();
     }
+
+    /**
+     * @param string $type
+     * @param string $message
+     */
+    public function addMessage(string $type, string $message)
+    {
+        $this->session->getFlashBag()->add($type, $message);
+    }
 }

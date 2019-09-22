@@ -21,7 +21,7 @@ use SimpleSkeletonCMS\Controller\AbstractController;
 class LogoutController extends AbstractController
 {
     /**
-     *
+     * Logout
      */
     public function index()
     {

@@ -16,6 +16,9 @@ use Dotenv\Dotenv;
 use SimpleSkeletonCMS\Application;
 use Zend\Config\Factory;
 
+ini_set("display_startup_errors", '1');
+ini_set("display_errors", '1');
+
 require __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv::create(__DIR__);

@@ -26,13 +26,15 @@ use SimpleSkeletonCMS\Utility\MessagesUtil;
  */
 class LoginController extends AbstractController
 {
+    const REDIRECT = '/admin/dashboard';
+
     /**
      * @return string
      */
     public function index(): string
     {
         if ($this->auth->check()) {
-            $this->redirect('/admin/dashboard');
+            $this->redirect(self::REDIRECT);
         }
         if ($this->request->getMethod() === 'POST') {
             $formData         = array_map('trim', $this->request->request->all());
@@ -44,7 +46,7 @@ class LoginController extends AbstractController
             }
             try {
                 $this->auth->login($formData['usermail'], $formData['pwd'], $rememberDuration);
-                $this->redirect('/admin/dashboard');
+                $this->redirect(self::REDIRECT);
             } catch (AttemptCancelledException |
             TooManyRequestsException |
             InvalidPasswordException |

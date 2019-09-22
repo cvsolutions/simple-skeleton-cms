@@ -8,9 +8,11 @@
  * file that was distributed with this source code.
  */
 declare(strict_types=1);
+
 namespace SimpleSkeletonCMS\Service;
 
 use League\Plates\Engine;
+use SimpleSkeletonCMS\Interfaces\TemplateServiceInterface;
 
 /**
  * Class TemplateService

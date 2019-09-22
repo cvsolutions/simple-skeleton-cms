@@ -18,6 +18,7 @@ use DI\NotFoundException;
 use Exception;
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use League\Plates\Engine;
 use Silly\Application as CliApplication;
 use SimpleSkeletonCMS\Utility\MessagesUtil;
 use smmoosavi\util\gettext\L10n;
@@ -89,12 +90,22 @@ class Application
 
             switch ($routeInfo[0]) {
                 case Dispatcher::NOT_FOUND:
-                    $response = new Response(
-                        MessagesUtil::MSG_NOT_FOUND,
-                        Response::HTTP_NOT_FOUND,
-                        ['content-type' => 'text/html']
-                    );
-                    $response->send();
+                    $templates = $this->container->get(Engine::class);
+                    if ($templates->exists('app::404')) {
+                        $response = new Response(
+                            $templates->render('app::404', []),
+                            Response::HTTP_NOT_FOUND,
+                            ['content-type' => 'text/html']
+                        );
+                        $response->send();
+                    } else {
+                        $response = new Response(
+                            MessagesUtil::MSG_NOT_FOUND,
+                            Response::HTTP_NOT_FOUND,
+                            ['content-type' => 'text/html']
+                        );
+                        $response->send();
+                    }
                     break;
 
                 case Dispatcher::METHOD_NOT_ALLOWED:
@@ -124,6 +135,7 @@ class Application
                     }
                     $locale = $parameters['lang'] ?? 'it';
                     L10n::init($locale, sprintf('%s/../translations/%s.mo', __DIR__, $locale));
+                    $this->container->get(Engine::class)->addData(['lang' => $locale]);
                     echo $this->container->call($controller, $parameters);
                     break;
             }
