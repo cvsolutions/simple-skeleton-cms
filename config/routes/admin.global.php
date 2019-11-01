@@ -12,6 +12,7 @@ declare(strict_types=1);
 use SimpleSkeletonCMS\Controller\Admin\DashboardController;
 use SimpleSkeletonCMS\Controller\Admin\LoginController;
 use SimpleSkeletonCMS\Controller\Admin\LogoutController;
+use SimpleSkeletonCMS\Controller\Admin\PagesController;
 
 return [
     'routes' => [
@@ -33,6 +34,15 @@ return [
                 'methods'    => 'GET',
                 'route'      => '/dashboard',
                 'controller' => DashboardController::class,
+                'action'     => 'index',
+                'options'    => [
+                    'protected' => true,
+                ],
+            ],
+            [
+                'methods'    => 'GET',
+                'route'      => '/pages',
+                'controller' => PagesController::class,
                 'action'     => 'index',
                 'options'    => [
                     'protected' => true,
