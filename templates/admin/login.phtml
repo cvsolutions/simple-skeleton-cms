@@ -17,6 +17,7 @@
                     <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1">
                     <label class="form-check-label" for="remember">Rimani collegato</label>
                 </div>
+                <input type="hidden" name="token" value="<?php echo $this->e($token); ?>">
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>

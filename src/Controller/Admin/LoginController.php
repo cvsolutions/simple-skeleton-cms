@@ -17,8 +17,10 @@ use Delight\Auth\EmailNotVerifiedException;
 use Delight\Auth\InvalidEmailException;
 use Delight\Auth\InvalidPasswordException;
 use Delight\Auth\TooManyRequestsException;
+use Exception;
 use SimpleSkeletonCMS\Controller\AbstractController;
 use SimpleSkeletonCMS\Utility\MessagesUtil;
+use Valitron\Validator;
 
 /**
  * Class LoginController
@@ -45,6 +47,21 @@ class LoginController extends AbstractController
                 $rememberDuration = $remember == 1 ? (int)(60 * 60 * 24 * 365.25) : null;
             }
             try {
+                // Easy CSRF
+                $this->easyCSRF->check('csrf_token', $formData['token'], (60 * 60));
+                // Validation of the fields of the form
+                Validator::lang('it');
+                $validator = new Validator($formData);
+                $validator->rule('required', ['usermail', 'pwd']);
+                $validator->rule('email', 'usermail');
+                $validator->labels(['usermail' => 'Indirizzo email', 'pwd' => 'Password']);
+                if (!$validator->validate()) {
+                    throw new Exception($this->getErrors($validator->errors()));
+                }
+            } catch (Exception $e) {
+                $this->session->getFlashBag()->add('danger', $e->getMessage());
+            }
+            try {
                 $this->auth->login($formData['usermail'], $formData['pwd'], $rememberDuration);
                 $this->redirect(self::REDIRECT);
             } catch (AttemptCancelledException |
@@ -56,6 +73,8 @@ class LoginController extends AbstractController
                 $this->session->getFlashBag()->add('danger', MessagesUtil::MSG_NO_ACCESS_ALLOWED);
             }
         }
-        return $this->view->render('admin::login', []);
+        return $this->view->render('admin::login', [
+            'token' => $this->easyCSRF->generate('csrf_token'),
+        ]);
     }
 }

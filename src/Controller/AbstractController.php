@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace SimpleSkeletonCMS\Controller;
 
 use Delight\Auth\Auth;
+use EasyCSRF\EasyCSRF;
 use SimpleSkeletonCMS\Service\TemplateService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,18 +45,30 @@ abstract class AbstractController
     protected $session;
 
     /**
+     * @var EasyCSRF
+     */
+    protected $easyCSRF;
+
+    /**
      * AbstractController constructor.
-     * @param TemplateService $templateService
+     * @param TemplateService $view
      * @param Request $request
      * @param Auth $auth
      * @param Session $session
+     * @param EasyCSRF $easyCSRF
      */
-    public function __construct(TemplateService $templateService, Request $request, Auth $auth, Session $session)
-    {
-        $this->view    = $templateService;
-        $this->request = $request;
-        $this->auth    = $auth;
-        $this->session = $session;
+    public function __construct(
+        TemplateService $view,
+        Request $request,
+        Auth $auth,
+        Session $session,
+        EasyCSRF $easyCSRF
+    ) {
+        $this->view     = $view;
+        $this->request  = $request;
+        $this->auth     = $auth;
+        $this->session  = $session;
+        $this->easyCSRF = $easyCSRF;
     }
 
     /**
@@ -74,5 +87,21 @@ abstract class AbstractController
     public function addMessage(string $type, string $message)
     {
         $this->session->getFlashBag()->add($type, $message);
+    }
+
+    /**
+     * @param array $errors
+     * @return string
+     */
+    public function getErrors(array $errors): string
+    {
+        $data = '<ul class="list-unstyled">';
+        foreach ($errors as $field) {
+            foreach ($field as $item) {
+                $data .= sprintf('<li>%s</li>', $item);
+            }
+        }
+        $data .= '</ul>';
+        return $data;
     }
 }

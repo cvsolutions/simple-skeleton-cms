@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 use Delight\Auth\Auth;
 use DI\Container;
+use EasyCSRF\EasyCSRF;
+use EasyCSRF\NativeSessionProvider;
 use League\Plates\Engine;
 use SimpleSkeletonCMS\Adapter\PhpMailerAdapter;
 use SimpleSkeletonCMS\Extension\ViewHelpers;
@@ -63,5 +65,9 @@ return [
     },
     MailService::class => function () {
         return new MailService(new PhpMailerAdapter());
+    },
+    EasyCSRF::class    => function () {
+        $sessionProvider = new NativeSessionProvider();
+        return new EasyCSRF($sessionProvider);
     },
 ];
