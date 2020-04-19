@@ -1,4 +1,4 @@
-![Simple Skeleton CMS](https://www.cvsolutions.it/simple-skeleton-cms.png)
+![Simple Skeleton CMS](https://www.cvsolutions.it/assets/simple-skeleton-cms.png)
 
 Is an open source content management system.
 
@@ -29,6 +29,8 @@ Is an open source content management system.
 - [Faker](https://github.com/fzaninotto/Faker)
 - [Pagerfanta](https://github.com/whiteoctober/Pagerfanta)
 - [PHPMailer](https://github.com/PHPMailer/PHPMailer)
+- [Easy Validation](https://github.com/vlucas/valitron)
+- [EasyCSRF](https://github.com/gilbitron/EasyCSRF)
 
 ## Docker
 
